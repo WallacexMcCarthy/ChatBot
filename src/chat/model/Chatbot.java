@@ -10,4 +10,10 @@ public class Chatbot
 		this.charbotName = chatbotName;
 		this.userName = "";
 	} 
+	
+	public String processText(String input)
+	{
+		String output = input;
+		return output;
+	}
 }

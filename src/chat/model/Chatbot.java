@@ -13,7 +13,7 @@ public class Chatbot
 	
 	public String processText(String input)
 	{
-		String output = input;
+		String output = reversePronounDirection(input);
 		return output;
 	}
 	private boolean spookyChecker(String text)
@@ -41,7 +41,7 @@ public class Chatbot
 	}
 	private String reversePronounDirection(String source)
 	{
-		String response = "";
+		String response = source.replace("I ", "You ");
 		return response;
 	}
 }

@@ -25,11 +25,11 @@ public class Controller
 		
 		while (!text.equalsIgnoreCase("shutdown"))
 		{
-			String charbotResponse = interactWithChatbot(text);
+			String chatbotResponse = interactWithChatbot(text);
 //			System.out.println("Chatbot says: ");
 //			System.out.println(charbotResponse);
 			
-			text = view.askQuestion("Chatbot says: " + charbotResponse);
+			text = view.askQuestion("Chatbot says: " + chatbotResponse);
 		}
 		
 

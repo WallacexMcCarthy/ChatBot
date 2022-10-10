@@ -1,14 +1,18 @@
 package chat.model;
 
+import java.util.ArrayList;
+
 public class Chatbot 
 {
 	private String charbotName;
 	private String userName;
+	private ArrayList<String> spookyList;
 	
 	public Chatbot(String chatbotName)
 	{
 		this.charbotName = chatbotName;
 		this.userName = "";
+		this.spookyList = new ArrayList<String>();
 	} 
 	
 	public String processText(String input)
@@ -18,8 +22,41 @@ public class Chatbot
 	}
 	private boolean spookyChecker(String text)
 	{
-		boolean isSpooky = true;
+		boolean isSpooky;
 		
+		spookyList.add("Spooky");
+		spookyList.add("spooky");
+		spookyList.add("Witch");
+		spookyList.add("witch");
+		spookyList.add("Ghost");
+		spookyList.add("ghost");
+		spookyList.add("Pumpkin");
+		spookyList.add("pumpkin");
+		spookyList.add("Spider");
+		spookyList.add("spider");
+		spookyList.add("Zombie");
+		spookyList.add("zombie");
+		spookyList.add("Haunted");
+		spookyList.add("haunted");
+		spookyList.add("Cult");
+		spookyList.add("cult");
+		spookyList.add("Bones");
+		spookyList.add("bones");
+		spookyList.add("Lurking");
+		spookyList.add("lurking");
+		
+		for(int index = 0; index < 20; index++)
+		{
+			if (text.contains(spookyList.get(index);
+		}
+		
+		if ()
+		{
+			isSpooky = true;
+		}else
+		{
+			isSpooky = false;
+		}
 		return isSpooky;
 	}
 	private String spookyResponse()
@@ -42,6 +79,8 @@ public class Chatbot
 	private String reversePronounDirection(String source)
 	{
 		String response = source.replace("I ", "You ");
+		response = response.replace("you", "me");
+		response = response.replace(" am ", " are ");
 		return response;
 	}
 }

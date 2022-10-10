@@ -18,11 +18,17 @@ public class Chatbot
 	public String processText(String input)
 	{
 		String output = reversePronounDirection(input);
+		
+		if (spookyChecker(input))
+		{
+			output += "\n" + spookyResponse() + "\n";
+		}
+		
 		return output;
 	}
 	private boolean spookyChecker(String text)
 	{
-		boolean isSpooky;
+		boolean isSpooky = false;
 		
 		spookyList.add("Spooky");
 		spookyList.add("spooky");
@@ -47,15 +53,10 @@ public class Chatbot
 		
 		for(int index = 0; index < 20; index++)
 		{
-			if (text.contains(spookyList.get(index);
-		}
-		
-		if ()
-		{
-			isSpooky = true;
-		}else
-		{
-			isSpooky = false;
+			if (text.contains(spookyList.get(index)))
+			{
+				isSpooky = true;
+			}
 		}
 		return isSpooky;
 	}

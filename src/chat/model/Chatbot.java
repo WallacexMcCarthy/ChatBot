@@ -24,6 +24,14 @@ public class Chatbot
 			output += "\n" + spookyResponse() + "\n";
 		}
 		
+		if (isValidHTMLChecker(input))
+		{
+			output += "\n" + isValidHTMLResponse() + "\n";
+		}else 
+		{
+			output += "\n" + "No HTML here :( " + "\n";
+		}
+		
 		return output;
 	}
 	private boolean spookyChecker(String text)
@@ -68,7 +76,12 @@ public class Chatbot
 	}
 	private boolean isValidHTMLChecker(String text)
 	{
-		boolean isValid = true;
+		boolean isValid = false;
+		
+		if (text.indexOf("<") == -1 || text.indexOf(">") == -1)
+		{
+			return isValid;
+		}
 		
 		return isValid;
 	}

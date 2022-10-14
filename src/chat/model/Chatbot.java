@@ -97,4 +97,16 @@ public class Chatbot
 		response = response.replace(" am ", " are ");
 		return response;
 	}
+	
+	private boolean holidayChecker(String input)
+	{
+		boolean isChristmas = false;
+		return isChristmas;
+	}
+	private String holidayResponse()
+	{
+		String response = "It is a holiday!";
+		
+		return response;
+	}
 }

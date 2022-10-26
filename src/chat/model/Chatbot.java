@@ -305,6 +305,31 @@ public class Chatbot
 		if (text.indexOf("<") == -1 || text.indexOf(">") == -1)
 		{
 			return isValid;
+		}else
+		{
+			int openTagStartIndex = text.indexOf("<");
+			int openTagEndIndex = text.indexOf(">", openTagStartIndex);
+			
+			if(openTagStartIndex < openTagEndIndex)
+			{
+				String keyword = text.substring(openTagStartIndex + 1, openTagEndIndex);
+				
+				int openTagStart = text.indexOf("<"+ keyword + ">");
+				int closeTagStartIndex = text.indexOf("</");
+				int closeTagEndIndex = text.indexOf(">", closeTagStartIndex);
+				if(closeTagStartIndex > openTagEndIndex && closeTagEndIndex > closeTagStartIndex)
+				{
+					String closingKeyword = text.substring(closeTagStartIndex + 2, closeTagEndIndex);
+					
+					int closeTagStart = text.indexOf("<" + closingKeyword + ">");
+					int spaceIndex = keyword.indexOf(" ");
+					if (spaceIndex != -1)
+					{
+						isValid = true;
+					}
+				}
+				
+			}
 		}
 		
 		return isValid;

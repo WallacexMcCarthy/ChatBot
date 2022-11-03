@@ -13,6 +13,8 @@ public class Chatbot
 	private ArrayList<String> jokeList;
 	private ArrayList<String> funFactList;
 	
+	private String [] chatTopics;
+	
 	public Chatbot(String chatbotName)
 	{
 		this.charbotName = chatbotName;
@@ -26,6 +28,19 @@ public class Chatbot
 		
 		spookyList();
 	} 
+	private void loadTopics()
+	{
+		String topicOne = "Do you like spicy food? I do!";
+		String topicTwo = "Do you like gummy bears? Sugar is very yummy!";
+		String toicThree = "Do you like kittens or puppies better?";
+		String topicFour = "Have you seen the video of the octopus escaing?";
+		String topicFive = "What is your favorite holiday?";
+		String topicSix = "The Sandman is one of my favorite comic books! Waht is your favorite comic book?";
+		String topicSeven = "I like to run, do you?";
+		String topicEight = "My coding clas uses Java what do you use?";
+		String topicNine = "I dont like cany corn, do you like it?";
+		String topicTen = "Writing code is hard but fun, what is your opinion on writing code?";
+	}
 	
 	public String processText(String input)
 	{
@@ -321,9 +336,13 @@ public class Chatbot
 				{
 					String closingKeyword = text.substring(closeTagStartIndex + 2, closeTagEndIndex);
 					
-					int closeTagStart = text.indexOf("<" + closingKeyword + ">");
+					int closeTagStart = text.indexOf("<" + closingKeyword + ">", openTagEndIndex);
 					int spaceIndex = keyword.indexOf(" ");
 					if (spaceIndex != -1)
+					{
+						keyword = keyword.substring(0, spaceIndex);
+					}
+					if (keyword.equals(closingKeyword))
 					{
 						isValid = true;
 					}

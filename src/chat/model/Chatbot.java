@@ -27,12 +27,13 @@ public class Chatbot
 		this.funFactList = new ArrayList<String>();
 		
 		spookyList();
+		loadTopics();
 	} 
 	private void loadTopics()
 	{
 		String topicOne = "Do you like spicy food? I do!";
 		String topicTwo = "Do you like gummy bears? Sugar is very yummy!";
-		String toicThree = "Do you like kittens or puppies better?";
+		String topicThree = "Do you like kittens or puppies better?";
 		String topicFour = "Have you seen the video of the octopus escaing?";
 		String topicFive = "What is your favorite holiday?";
 		String topicSix = "The Sandman is one of my favorite comic books! Waht is your favorite comic book?";
@@ -40,24 +41,54 @@ public class Chatbot
 		String topicEight = "My coding clas uses Java what do you use?";
 		String topicNine = "I dont like cany corn, do you like it?";
 		String topicTen = "Writing code is hard but fun, what is your opinion on writing code?";
+		
+		
+		this.chatTopics = new String [] {topicOne, topicTwo, topicThree, topicFour, topicFive, topicSix, topicSeven, topicEight, topicNine, topicTen};
 	}
 	
 	public String processText(String input)
 	{
-		String output = reversePronounDirection(input);
-		
-		if (spookyChecker(input))
+		String output = "";
+		int randomMethod = (int) (Math.random()*6);
+		if(randomMethod == 0)
 		{
-			output += "\n" + spookyResponse() + "\n";
+			output = reversePronounDirection(input);
+		}else if(randomMethod == 1)
+		{
+			if (spookyChecker(input))
+			{
+				output += "\n" + spookyResponse() + "\n";
+			}else
+			{
+				output += "\n" + "That was veyr spooky";
+			}
+		}else if (randomMethod == 2)
+		{
+			if (isValidHTMLChecker(input))
+			{
+				output += "\n" + isValidHTMLResponse() + "\n";
+			}else 
+			{
+				output += "\n" + "No HTML here :( " + "\n";
+			}
+		}else if (randomMethod == 3)
+		{
+			if(holidayChecker(input))
+			{
+				output +="\n" + holidayResponse() +"\n The holiday is: " + whatHolidayChecker(input);
+			}
+		}else if (randomMethod == 4)
+		{
+			
+			output += tellGroanJoke();
+		}else if (randomMethod == 5)
+		{
+			output += tellRandomFact();
 		}
 		
-		if (isValidHTMLChecker(input))
-		{
-			output += "\n" + isValidHTMLResponse() + "\n";
-		}else 
-		{
-			output += "\n" + "No HTML here :( " + "\n";
-		}
+		int randomTopic = (int) (Math.random() * chatTopics.length);
+		output += "\n" + chatTopics[randomTopic];
+		
 		
 		return output;
 	}
@@ -208,6 +239,7 @@ public class Chatbot
 	}
 	
 	private boolean holidayChecker(String text)
+
 	{
 		boolean isHoliday = false;
 		int christmasInt = 0;
@@ -249,6 +281,7 @@ public class Chatbot
 		return isHoliday;
 	}
 	private String whatHolidayChecker(String text)
+
 	{
 		String whatHoliday = "";
 		for(int index = 0; index < christmasList.size(); index++)
@@ -269,6 +302,7 @@ public class Chatbot
 		return whatHoliday;
 	}
 	private String holidayResponse()
+
 	{
 		String response = "It is a holiday!";
 		
